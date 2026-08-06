@@ -1,22 +1,20 @@
+<title></title>
 <section id="types">
-  <h2>Types</h2>
-
+  <h2>
+    Types
+  </h2>
   <p class="note">
-    Type names defined here are scoped under the
-    <a>monetization</a> namespace. Implementations expose them as
-    namespace-scoped dictionaries on `chrome.monetization`
-    (for example, {{monetization/Wallet}} corresponds to
+    Type names defined here are scoped under the <a>monetization</a> namespace.
+    Implementations expose them as namespace-scoped dictionaries on
+    `chrome.monetization` (for example, {{monetization/Wallet}} corresponds to
     `chrome.monetization.Wallet`).
-  </p>
-
   <section data-dfn-for="monetization/Wallet">
-    <h3><dfn data-dfn-for="monetization">Wallet</dfn></h3>
-
+    <h3>
+      <dfn data-dfn-for="monetization">Wallet</dfn>
+    </h3>
     <p>
-      Describes the connected user wallet, including its current
-      budget balance.
-    </p>
-
+      Describes the connected user wallet, including its current budget
+      balance.
     <pre class="idl">
       enum ReconnectReason {
         "unauthorized"
@@ -32,78 +30,68 @@
         ReconnectReason? reconnectReason;
       };
     </pre>
-
-    <h4>Properties</h4>
+    <h4>
+      Properties
+    </h4>
     <dl>
-      <dt><dfn>address</dfn></dt>
+      <dt>
+        <dfn>address</dfn>
       <dd>
-        The canonical wallet address URL, as returned in the `id`
-        field of the Open Payments wallet address resource. This is
-        the resolved address (e.g.
-        `"https://ilp.example.com/123456/usd"`), which may differ
-        from the URL the user originally entered (such as a
-        `.well-known/pay` shortcut).
-      </dd>
-
-      <dt><dfn>name</dfn></dt>
+        The canonical wallet address URL, as returned in the `id` field of the
+        Open Payments wallet address resource. This is the resolved address
+        (e.g. `"https://ilp.example.com/123456/usd"`), which may differ from
+        the URL the user originally entered (such as a `.well-known/pay`
+        shortcut).
+      <dt>
+        <dfn>name</dfn>
       <dd>
         A human-readable name for the wallet.
-      </dd>
-
-      <dt><dfn>currency</dfn></dt>
+      <dt>
+        <dfn>currency</dfn>
       <dd>
         An ISO 4217 currency code (e.g. `"USD"`).
-      </dd>
-
-      <dt><dfn>initialBalance</dfn></dt>
+      <dt>
+        <dfn>initialBalance</dfn>
       <dd>
-        A decimal string representing the total budget allocated for
-        the current billing period (e.g. `"10.00"`).
-      </dd>
-
-      <dt><dfn>remainingBalance</dfn></dt>
+        A decimal string representing the total budget allocated for the
+        current billing period (e.g. `"10.00"`).
+      <dt>
+        <dfn>remainingBalance</dfn>
       <dd>
-        A decimal string representing the budget remaining for the
-        current billing period (e.g. `"7.50"`).
-      </dd>
-
-      <dt><dfn>renewDate</dfn></dt>
+        A decimal string representing the budget remaining for the current
+        billing period (e.g. `"7.50"`).
+      <dt>
+        <dfn>renewDate</dfn>
       <dd>
-        An ISO 8601 date string indicating when the budget next renews.
-        Absent when the budget does not renew monthly.
-      </dd>
-
-      <dt><dfn>reconnectReason</dfn></dt>
+        An ISO 8601 date string indicating when the budget next renews. Absent
+        when the budget does not renew monthly.
+      <dt>
+        <dfn>reconnectReason</dfn>
       <dd>
-        When present, indicates that the wallet must be reconnected
-        before it can be used, and conveys the reason. When absent,
-        the wallet is usable. Possible values:
+        When present, indicates that the wallet must be reconnected before it
+        can be used, and conveys the reason. When absent, the wallet is usable.
+        Possible values:
         <dl>
-          <dt>`"unauthorized"`</dt>
+          <dt>
+            `"unauthorized"`
           <dd>
-            The stored access token is no longer valid (for example,
-            it has expired or been revoked).
-          </dd>
+            The stored access token is no longer valid (for example, it has
+            expired or been revoked).
         </dl>
-      </dd>
     </dl>
-
     <p class="note">
       The {{Wallet/currency}}, {{Wallet/initialBalance}}, and
       {{Wallet/remainingBalance}} members use the same conventions as the
       `currency` and `value` members of the {{PaymentCurrencyAmount}}
       dictionary defined in [[payment-request]] (and the
       `MonetizationCurrencyAmount` interface in [[WebMonetization]]).
-    </p>
   </section>
-
   <section data-dfn-for="monetization/Session">
-    <h3><dfn data-dfn-for="monetization">Session</dfn></h3>
-
+    <h3>
+      <dfn data-dfn-for="monetization">Session</dfn>
+    </h3>
     <p>
       Identifies a monetization session and the document it belongs to.
-    </p>
-
     <pre class="idl">
       dictionary Session {
         required long tabId;
@@ -112,29 +100,28 @@
         required DOMString walletAddress;
       };
     </pre>
-
-    <h4>Properties</h4>
+    <h4>
+      Properties
+    </h4>
     <dl>
-      <dt><dfn>tabId</dfn></dt>
+      <dt>
+        <dfn>tabId</dfn>
       <dd>
         The identifier of the tab containing the monetized document.
-      </dd>
-
-      <dt><dfn>frameId</dfn></dt>
+      <dt>
+        <dfn>frameId</dfn>
       <dd>
-        The identifier of the frame within the tab.
-        `0` denotes the top-level (main) frame.
-      </dd>
-
-      <dt><dfn>sessionId</dfn></dt>
+        The identifier of the frame within the tab. `0` denotes the top-level
+        (main) frame.
+      <dt>
+        <dfn>sessionId</dfn>
       <dd>
         The identifier of the monetization session.
-      </dd>
-
-      <dt><dfn>walletAddress</dfn></dt>
+      <dt>
+        <dfn>walletAddress</dfn>
       <dd>
         The wallet address being paid by this session.
-      </dd>
     </dl>
   </section>
 </section>
+
